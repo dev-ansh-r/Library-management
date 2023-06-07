@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Home Page</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style media="screen">
+        *,
+        *:before,
+        *:after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #080710;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .background {
+            width: 430px;
+            height: 520px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .background .shape {
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+        }
+
+        .shape:first-child {
+            background: linear-gradient(#1845ad, #23a2f6);
+        }
+
+        .shape:last-child {
+            background: linear-gradient(to right, #a7361f, #f09819);
+            align-self: center;
+        }
+
+        h3 {
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 40px;
+            text-align: center;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 14px;
+        }
+
+        button {
+            width: 8rem;
+            background-color: #ffffff;
+            color: #080710;
+            padding: 13px 13px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            margin: 15px 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <h3>Welcome To Library </h3>
+        {% if user.is_authenticated %}
+        <h1>Hi, {{ user.username }}!</h1>
+        <button type="submit"><a href="/logout">Logout</a></button>
+        {% else %}
+        <h1>Hi, Guest!</h1>
+        <button type="submit"><a href="/register">Register</a></button>
+        <button type="submit"><a href="/login">Login</a></button>
+
+        {% endif %}
+    </div>
+
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <script src="" async defer></script>
+</body>
+
+</html>
