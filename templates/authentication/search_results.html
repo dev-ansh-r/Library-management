@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
 
 <head>
-    <title>Home Page</title>
+    <title>search_results</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
@@ -110,31 +114,22 @@
 </head>
 
 <body>
-    <div style="text-align: center; height: 100%; display: grid; align-items: start;">
-        <form id="search-form" action="/search-books" method="GET">
-            <div class="search-container">
-                <input type="text" id="search-input" name="query" placeholder="Search for books...">
-                <button type="submit" id="search-button">Search</button>
-            </div>
-        </form>
-        <div style="text-align: center;">
-            <h3>Welcome To Library</h3>
-            {% if user.is_authenticated %}
-            <h1>Hi, {{ user.username }}!</h1>
-            <button type="submit"><a href="/logout">Logout</a></button>
-            {% else %}
-            <h1>Hi, Guest!</h1>
-            <button type="submit"><a href="/register">Register</a></button>
-            <button type="submit"><a href="/login">Login</a></button>
-            {% endif %}
-        </div>
+    <div>
+        <h3>Search Results</h3>
+        {% if books %}
+        <ul>
+            {% for book in books %}
+            <li>{{ book.title }} by {{ book.author }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No books found.</p>
+        {% endif %}
     </div>
-
     <div class="background">
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-
     <script src="" async defer></script>
 </body>
 

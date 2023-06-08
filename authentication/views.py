@@ -6,11 +6,20 @@ from django.http import HttpResponse
 from django.contrib import auth
 from django.contrib.auth import authenticate
 from Library import settings
-
+from .models import Book, Borrower, BorrowedBook 
 
 def home(request):
     return render (request, "authentication/index.html")
 
+def search_books(request):
+    query = request.GET.get('query')
+    if query:
+        books = Book.objects.filter(title__icontains=query, available=True)
+    else:
+        books = []
+
+    context = {'books': books}
+    return render(request, 'authentication/search_results.html',context)
 
 def register(request):
 
@@ -41,8 +50,7 @@ def register(request):
         myuser.first_name = fname
         myuser.last_name = lname
         myuser.save()
-        myuser.
-
+        
         messages.success(request, "Your account has been Suucessfully created.")
         
         return redirect('login')
