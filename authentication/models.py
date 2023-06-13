@@ -16,8 +16,11 @@ class Author(models.Model):
 class Book(models.Model):
     title = models.CharField(max_length=100)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    isbn = models.IntegerField(default=678342678432)
     publication_date = models.DateField()
-    available = models.BooleanField(default=True)
+    available = models.BooleanField(default=False)
+    quantity = models.IntegerField(default=1)
+    issued = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title

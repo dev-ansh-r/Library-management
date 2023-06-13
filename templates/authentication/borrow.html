@@ -6,7 +6,7 @@
 <html>
 
 <head>
-    <title>search_results</title>
+    <title>borrow</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
@@ -141,51 +141,7 @@
 
 <body>
     <div>
-        <h3>Search Results</h3>
-        <table>
-            <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>ISBN</th>
-                <th>Year of Publication</th>
-                <th>Issued</th>
-                <th>Quantity</th>
-            </tr>
-            {% if books %}
-            {% for book in books %}
-            <tr>
-                <td>{{ book.title }}</td>
-                <td>{{ book.author }}</td>
-                <td>{{ book.isbn }}</td>
-                <td>{{ book.publication_date }}</td>
-                <td>{{ book.issued }}</td>
-                <td>{{ book.quantity }}</td>
-            </tr>
-            {% endfor %}
-            {% else %}
-            <p>No books found.</p>
-            <tr>
-                <td>*</td>
-                <td>*</td>
-                <td>*</td>
-                <td>*</td>
-                <td>*</td>
-                <td>*</td>
-            </tr>
-            {% endif %}
-        </table>
-        <!-- Add a borrow button to borrow the book if available-->
-        <div class="button-container">
-            {% if books%}
-            {% for book in books %}
-            {% if book.issued < book.quantity %}
-            <button><a href="/borrow">Borrow</a></button>
-            {%else %}
-            <button class="disabled-button">Borrow</button>
-            {% endif %}
-            {% endfor %}
-            {% endif %}
-        </div>
+        <h3>Borrow</h3>
     </div>
     <div class="background">
         <div class="shape"></div>

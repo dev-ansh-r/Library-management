@@ -79,3 +79,6 @@ def logout(request):
     auth.logout(request)
     messages.success(request, "Successfully logged out")
     return redirect('home')
+
+def borrow(request):
+    return render(request, "authentication/borrow.html")

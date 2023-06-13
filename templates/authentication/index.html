@@ -111,12 +111,14 @@
 
 <body>
     <div style="text-align: center; height: 100%; display: grid; align-items: start;">
-        <form id="search-form" action="/search-books" method="GET">
+        {% if user.is_authenticated %}
+        <form id="search-form" action="/search_books" method="GET">
             <div class="search-container">
-                <input type="text" id="search-input" name="query" placeholder="Search for books...">
+                <input type="text" id="search-input" name="query" placeholder="Search for books or authors...">
                 <button type="submit" id="search-button">Search</button>
             </div>
         </form>
+        {% endif %}
         <div style="text-align: center;">
             <h3>Welcome To Library</h3>
             {% if user.is_authenticated %}
