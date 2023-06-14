@@ -176,16 +176,21 @@
         </table>
         <!-- Add a borrow button to borrow the book if available-->
         <div class="button-container">
-            {% if books%}
+            {% if books %}
             {% for book in books %}
-            {% if book.issued < book.quantity %}
-            <button><a href="/borrow">Borrow</a></button>
-            {%else %}
-            <button class="disabled-button">Borrow</button>
-            {% endif %}
-            {% endfor %}
-            {% endif %}
+            {% if book.issued < book.quantity %} <form action="/borrow" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="book_id" value="{{ book.id }}">
+                <input type="hidden" name="username" value="{{ username }}">
+                <button type="submit">Borrow</button>
+                </form>
+                {% else %}
+                <button class="disabled-button" disabled>Borrow</button>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
         </div>
+
     </div>
     <div class="background">
         <div class="shape"></div>
